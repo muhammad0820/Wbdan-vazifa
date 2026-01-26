@@ -1,4 +1,3 @@
-/* ===== RESET ===== */
 *{
   margin:0;
   padding:0;
@@ -11,7 +10,6 @@ body{
   color:#111827;
 }
 
-/* ===== HEADER ===== */
 .topbar{
   background:#0f172a;
   padding:15px 60px;
@@ -73,7 +71,6 @@ body{
   color:#facc15;
 }
 
-/* ===== HERO ===== */
 .hero{
   display:flex;
   justify-content:space-between;
@@ -126,7 +123,6 @@ body{
   color:#0f172a;
 }
 
-/* Hero right image */
 .hero-right{
   flex:1;
   display:flex;
@@ -139,7 +135,6 @@ body{
   box-shadow:0 15px 30px rgba(0,0,0,0.35);
 }
 
-/* ===== CATEGORY SECTIONS ===== */
 .category-section{
   padding:60px 80px;
 }
@@ -153,7 +148,6 @@ body{
   margin-bottom:25px;
 }
 
-/* ===== PRODUCT GRID ===== */
 .product-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));

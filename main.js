@@ -1,9 +1,9 @@
-// ===== YEAR =====
+
 document.querySelectorAll("#year").forEach(y=>{
   y.textContent = new Date().getFullYear();
 });
 
-// ===== CART STORAGE =====
+
 function getCart(){
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -13,7 +13,7 @@ function saveCart(cart){
   updateCartCount();
 }
 
-// ===== HEADER COUNT =====
+
 function updateCartCount(){
   const cartCount = document.getElementById("cartCount");
   if(cartCount){
@@ -23,7 +23,6 @@ function updateCartCount(){
 updateCartCount();
 
 
-// ===== ADD TO CART (INDEX PAGE) =====
 document.querySelectorAll(".add-to-cart").forEach(btn=>{
   btn.addEventListener("click", ()=>{
 
@@ -37,7 +36,7 @@ document.querySelectorAll(".add-to-cart").forEach(btn=>{
     cart.push(product);
     saveCart(cart);
 
-    // Tugma effekt
+   
     const oldText = btn.textContent;
     btn.textContent = "✅ Qo‘shildi";
     btn.style.background = "#22c55e";
@@ -50,7 +49,7 @@ document.querySelectorAll(".add-to-cart").forEach(btn=>{
 });
 
 
-// ===== CART PAGE RENDER =====
+
 const cartItemsBox = document.getElementById("cartItems");
 const itemCount = document.getElementById("itemCount");
 const totalPriceBox = document.getElementById("totalPrice");

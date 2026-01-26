@@ -49,13 +49,11 @@ const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 const product = products[id];
 
-// HTML ga chiqarish
 document.getElementById("productName").innerText = product.name;
 document.getElementById("productPrice").innerText = product.price + " so'm";
 document.getElementById("productImage").src = product.img;
 document.getElementById("productDesc").innerText = product.desc;
 
-// ===== SAVATGA QO‘SHISH =====
 document.querySelector(".buy-btn").addEventListener("click", function () {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
