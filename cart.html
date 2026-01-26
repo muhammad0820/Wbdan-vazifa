@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savatcha | TechHouse</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      Tech<span>House</span>
+    </a>
+
+    <nav class="menu">
+      <a href="index.html">Bosh sahifa</a>
+      <a href="cart.html" class="cart-link">
+        🛒 Savatcha <span id="cartCount">0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+
+<!-- CART PAGE -->
+<section class="cart-page">
+
+  <h1>🛒 Savatchangiz</h1>
+  <a href="index.html" class="back-btn">← Xaridni davom ettirish</a>
+
+  <div class="cart-container">
+
+    <!-- PRODUCTS -->
+    <div id="cartItems" class="cart-list"></div>
+
+    <!-- SUMMARY -->
+    <div class="cart-summary">
+      <h2>Buyurtma xulosasi</h2>
+
+      <div class="summary-row">
+        <span>Mahsulotlar soni:</span>
+        <span id="~">0</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Jami summa:</span>
+        <strong id="totalPrice">0 so'm</strong>
+      </div>
+
+      <a href="login.html" class="checkout-btn">
+        Buyurtma berish
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    © <span id="year"></span> TechHouse. Barcha huquqlar himoyalangan.
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

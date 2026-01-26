@@ -1,0 +1,253 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,Arial,sans-serif
+}
+
+body{
+background:#f8fafc;
+color:#020617
+}
+
+.loyalty-hero{
+height:80vh;
+background:linear-gradient(135deg,#020617,#1e293b);
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px
+}
+
+.hero-content{
+max-width:700px;
+color:#fff
+}
+
+.hero-content h1{
+font-size:52px;
+margin-bottom:20px
+}
+
+.hero-content p{
+font-size:18px;
+color:#cbd5e1;
+margin-bottom:34px
+}
+
+.hero-btn{
+padding:16px 40px;
+background:#38bdf8;
+color:#020617;
+text-decoration:none;
+border-radius:40px;
+font-size:16px;
+font-weight:600;
+transition:.3s
+}
+
+.hero-btn:hover{
+background:#0ea5e9;
+color:#fff
+}
+
+.loyalty-info{
+padding:80px 40px;
+display:flex;
+justify-content:center
+}
+
+.info-box{
+max-width:900px;
+background:#fff;
+padding:60px;
+border-radius:30px;
+box-shadow:0 30px 80px rgba(2,6,23,.1);
+text-align:center
+}
+
+.info-box h2{
+font-size:32px;
+margin-bottom:20px
+}
+
+.info-box p{
+font-size:16px;
+color:#475569;
+line-height:1.8
+}
+
+.loyalty-levels{
+padding:100px 40px;
+background:#020617
+}
+
+.section-title{
+text-align:center;
+font-size:36px;
+color:#fff;
+margin-bottom:60px
+}
+
+.levels-container{
+max-width:1300px;
+margin:0 auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px
+}
+
+.level-card{
+background:#0f172a;
+border-radius:28px;
+padding:40px;
+color:#fff;
+text-align:center;
+position:relative;
+transition:.3s
+}
+
+.level-card:hover{
+transform:translateY(-10px)
+}
+
+.level-card h3{
+font-size:24px;
+margin-bottom:10px
+}
+
+.price{
+font-size:15px;
+color:#38bdf8;
+margin-bottom:24px;
+display:block
+}
+
+.level-card ul{
+list-style:none;
+margin-bottom:30px
+}
+
+.level-card ul li{
+margin-bottom:14px;
+font-size:15px;
+color:#cbd5e1
+}
+
+.level-card button{
+padding:14px 30px;
+border:none;
+border-radius:30px;
+background:#38bdf8;
+color:#020617;
+font-size:15px;
+cursor:pointer;
+transition:.3s
+}
+
+.level-card button:hover{
+background:#0ea5e9;
+color:#fff
+}
+
+.popular{
+border:2px solid #38bdf8;
+transform:scale(1.05)
+}
+
+.badge{
+position:absolute;
+top:-16px;
+left:50%;
+transform:translateX(-50%);
+background:#38bdf8;
+color:#020617;
+padding:6px 18px;
+border-radius:20px;
+font-size:13px;
+font-weight:600
+}
+
+.loyalty-benefits{
+padding:100px 40px
+}
+
+.benefits-grid{
+max-width:1200px;
+margin:0 auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px
+}
+
+.benefit{
+background:#fff;
+padding:40px;
+border-radius:24px;
+box-shadow:0 20px 60px rgba(2,6,23,.1);
+text-align:center
+}
+
+.benefit h4{
+font-size:20px;
+margin-bottom:14px
+}
+
+.benefit p{
+font-size:15px;
+color:#475569;
+line-height:1.6
+}
+
+.loyalty-cta{
+padding:120px 40px;
+background:linear-gradient(135deg,#38bdf8,#0ea5e9);
+text-align:center;
+color:#fff
+}
+
+.loyalty-cta h2{
+font-size:40px;
+margin-bottom:20px
+}
+
+.loyalty-cta p{
+font-size:18px;
+margin-bottom:34px
+}
+
+.cta-btn{
+padding:16px 44px;
+background:#020617;
+color:#fff;
+text-decoration:none;
+border-radius:40px;
+font-size:16px;
+transition:.3s
+}
+
+.cta-btn:hover{
+background:#0f172a
+}
+
+@media(max-width:1100px){
+.levels-container{
+grid-template-columns:repeat(2,1fr)
+}
+.benefits-grid{
+grid-template-columns:repeat(2,1fr)
+}
+}
+
+@media(max-width:600px){
+.hero-content h1{
+font-size:36px
+}
+.levels-container{
+grid-template-columns:1fr
+}
+.benefits-grid{
+grid-template-columns:1fr
+}
+}

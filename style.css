@@ -1,0 +1,278 @@
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body{
+  background:#f6f7fb;
+  color:#111827;
+}
+
+/* ===== HEADER ===== */
+.topbar{
+  background:#0f172a;
+  padding:15px 60px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  color:white;
+  font-size:26px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+.brand span{
+  color:#38bdf8;
+}
+
+.menu{
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.menu a{
+  color:#e5e7eb;
+  text-decoration:none;
+  font-size:15px;
+  transition:0.3s;
+}
+
+.menu a:hover{
+  color:#38bdf8;
+}
+
+.cart-link{
+  background:#22c55e;
+  padding:6px 14px;
+  border-radius:20px;
+  color:white !important;
+  font-weight:bold;
+}
+
+.login-link{
+  background:#3b82f6;
+  padding:6px 14px;
+  border-radius:20px;
+  color:white !important;
+}
+
+.sodiqlik-link i{
+  color:#facc15;
+}
+
+/* ===== HERO ===== */
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:60px 80px;
+  background:linear-gradient(90deg,#0f172a,#1e293b);
+  color:white;
+}
+
+.hero-left{
+  flex:1;
+}
+
+.hero-left h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.hero-left p{
+  font-size:18px;
+  opacity:0.8;
+  margin-bottom:25px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+}
+
+.btn-primary{
+  background:#38bdf8;
+  color:#0f172a;
+  padding:10px 22px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.btn-outline{
+  border:2px solid #38bdf8;
+  color:#38bdf8;
+  padding:8px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.btn-outline:hover{
+  background:#38bdf8;
+  color:#0f172a;
+}
+
+/* Hero right image */
+.hero-right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+}
+
+.hero-right img{
+  max-width:480px;
+  border-radius:14px;
+  box-shadow:0 15px 30px rgba(0,0,0,0.35);
+}
+
+/* ===== CATEGORY SECTIONS ===== */
+.category-section{
+  padding:60px 80px;
+}
+
+.category-section.alt{
+  background:#eef2ff;
+}
+
+.category-section h2{
+  font-size:26px;
+  margin-bottom:25px;
+}
+
+/* ===== PRODUCT GRID ===== */
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+}
+
+.product-card{
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+}
+
+.product-card img{
+  width:100%;
+  height:180px;
+  object-fit:contain;
+  margin-bottom:10px;
+}
+
+.product-card h3{
+  font-size:16px;
+  margin-bottom:6px;
+}
+
+.price{
+  font-weight:bold;
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+.add-to-cart{
+  background:#3b82f6;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.add-to-cart:hover{
+  background:#2563eb;
+}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:#0f172a;
+  color:#e5e7eb;
+  padding:50px 80px 20px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+  margin-bottom:20px;
+}
+
+.footer-grid h3,
+.footer-grid h4{
+  color:#38bdf8;
+  margin-bottom:10px;
+}
+
+.footer-grid a{
+  color:#e5e7eb;
+  text-decoration:none;
+  display:block;
+  margin:4px 0;
+}
+
+.footer-grid a:hover{
+  color:#38bdf8;
+}
+
+.footer-bottom{
+  border-top:1px solid #334155;
+  padding-top:15px;
+  text-align:center;
+  font-size:14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+
+  .topbar{
+    padding:15px 20px;
+  }
+
+  .menu{
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+  }
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+    padding:40px 20px;
+  }
+
+  .hero-right img{
+    max-width:90%;
+    margin-top:30px;
+  }
+
+  .category-section{
+    padding:40px 20px;
+  }
+
+  .site-footer{
+    padding:40px 20px 20px;
+  }
+}

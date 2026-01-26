@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <title>Mahsulot tafsiloti</title>
+  <link rel="stylesheet" href="carddetail.css">
+</head>
+<body>
+
+  <div class="container">
+    <div class="detail-card">
+
+      <div class="image-box">
+        <img id="productImage" src="" alt="Mahsulot rasmi">
+      </div>
+
+      <div class="info-box">
+        <h1 id="productName"></h1>
+        <p class="price" id="productPrice"></p>
+        <p class="desc" id="productDesc"></p>
+
+        <button class="buy-btn">Savatga qo‘shish</button>
+        <a href="index.html" class="back-link">← Orqaga qaytish</a>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+const products = {
+  1:{name:"Blender Pro",price:450000,img:"./imgs/image copy.png",desc:"Oshxona uchun kuchli va zamonaviy blender."},
+  2:{name:"Mikroto‘lqinli pech",price:560000,img:"./imgs/image copy 2.png",desc:"Tez va qulay ovqat isitish moslamasi."},
+  3:{name:"Muzlatgich",price:5400000,img:"./imgs/image copy 3.png",desc:"Katta sig‘imli muzlatgich."},
+  4:{name:"Changyutgich",price:1850000,img:"./imgs/image copy 4.png",desc:"Uy uchun changyutgich."},
+  5:{name:"Idish yuvgich",price:4800000,img:"./imgs/image copy 5.png",desc:"Idish yuvish mashinasi."},
+  6:{name:"Robot changyutgich",price:2000000,img:"./imgs/image copy 6.png",desc:"Aqlli robot changyutgich."},
+  7:{name:"Isitgich",price:450000,img:"./imgs/image copy 7.png",desc:"Xona isitish qurilmasi."},
+  8:{name:"Ventilyator",price:1800000,img:"./imgs/image copy 8.png",desc:"Salqinlik beruvchi ventilyator."},
+  9:{name:"Konditsioner",price:3450000,img:"./imgs/image copy 9.png",desc:"Isitish va sovutish qurilmasi."},
+  10:{name:"Fen",price:2300000,img:"./imgs/image copy 9.png",desc:"Soch quritish feni."},
+  11:{name:"Elektr ustara",price:280000,img:"./imgs/image copy 11.png",desc:"Soqol olish moslamasi."},
+  12:{name:"Soch tekislagich",price:1100000,img:"./imgs/image copy 12.png",desc:"Soch tekislagich."},
+  13:{name:"Aqlli kamera",price:1100000,img:"./imgs/image copy 13.png",desc:"Uy xavfsizligi kamerasi."},
+  14:{name:"Alisa kalonka",price:780000,img:"./imgs/image copy 14.png",desc:"Aqlli ovozli kolonka."},
+  15:{name:"Aqlli sensor",price:350000,img:"./imgs/image copy 15.png",desc:"Aqlli uy sensori."}
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+const product = products[id];
+
+// HTML ga chiqarish
+document.getElementById("productName").innerText = product.name;
+document.getElementById("productPrice").innerText = product.price + " so'm";
+document.getElementById("productImage").src = product.img;
+document.getElementById("productDesc").innerText = product.desc;
+
+// ===== SAVATGA QO‘SHISH =====
+document.querySelector(".buy-btn").addEventListener("click", function () {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({
+    id: id,
+    name: product.name,
+    price: product.price,
+    image: product.img
+  });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Mahsulot savatchaga qo‘shildi ✅");
+});
+</script>
