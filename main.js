@@ -1,9 +1,8 @@
-// ===== YEAR =====
 document.querySelectorAll("#year").forEach(y => {
   y.textContent = new Date().getFullYear();
 });
 
-// ===== CART STORAGE =====
+
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -13,7 +12,7 @@ function saveCart(cart) {
   updateCartCount();
 }
 
-// ===== HEADER COUNT =====
+
 function updateCartCount() {
   const cartCount = document.getElementById("cartCount");
   if (cartCount) {
@@ -24,7 +23,7 @@ function updateCartCount() {
 }
 updateCartCount();
 
-// ===== ADD TO CART =====
+
 document.querySelectorAll(".add-to-cart").forEach(btn => {
   btn.addEventListener("click", () => {
     const product = {
@@ -94,13 +93,13 @@ if (cartItemsBox) {
   }
 
   if (itemCount) {
-    itemCount.textContent = totalItems; // Umumiy mahsulotlar soni (miqdorlar bilan)
+    itemCount.textContent = totalItems; 
   }
   if (totalPriceBox) {
     totalPriceBox.textContent = total.toLocaleString() + " so'm";
   }
 
-  // Event listeners for quantity and remove
+  
   document.querySelectorAll(".qty-btn.plus").forEach(btn => {
     btn.onclick = () => {
       const cart = getCart();
