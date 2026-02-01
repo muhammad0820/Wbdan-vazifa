@@ -17,7 +17,6 @@
       <nav class="menu">
         <a href="#all-products">Barchasi</a>
 
-        <!-- kategoriya tugmalarini bosiladigan qildim -->
         <a href="#all-products" class="cat-link" data-cat="kitchen">Oshxona</a>
         <a href="#all-products" class="cat-link" data-cat="cleaning">Tozalash</a>
         <a href="#all-products" class="cat-link" data-cat="climate">Isitish & Sovutish</a>
@@ -71,12 +70,10 @@
 </footer>
 
 <script>
-  // ===== YEAR =====
   document.querySelectorAll("#year").forEach(y => {
     y.textContent = new Date().getFullYear();
   });
 
-  // ===== CART STORAGE (qty) =====
   function getCart() {
     try { return JSON.parse(localStorage.getItem("cart")) || []; }
     catch { return []; }
@@ -85,7 +82,7 @@
     localStorage.setItem("cart", JSON.stringify(cart));
   }
 
-  // ===== COUNT =====
+
   function updateCartCount(){
     const el = document.getElementById("cartCount");
     if(!el) return;
@@ -94,7 +91,6 @@
     el.textContent = `(${total})`;
   }
 
-  // ===== RENDER =====
   function renderCart(){
     const cartItemsBox = document.getElementById("cartItems");
     const itemCount = document.getElementById("itemCount");
@@ -150,7 +146,6 @@
     updateCartCount();
   }
 
-  // ===== CLICK HANDLER (reloadsiz) =====
   document.addEventListener("click", (e) => {
     const plus = e.target.closest(".qty-btn.plus");
     const minus = e.target.closest(".qty-btn.minus");
@@ -187,7 +182,6 @@
     }
   });
 
-  // INIT
   updateCartCount();
   renderCart();
 </script>

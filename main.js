@@ -1,9 +1,7 @@
-// ================= YEAR =================
 document.querySelectorAll("#year").forEach(y => {
   y.textContent = new Date().getFullYear();
 });
 
-// ================= CART STORAGE =================
 function getCart() {
   try {
     return JSON.parse(localStorage.getItem("cart")) || [];
@@ -16,7 +14,6 @@ function saveCart(cart) {
 }
 let cart = getCart();
 
-// ================= FAVORITES STORAGE =================
 let favorites = [];
 try {
   favorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -27,7 +24,6 @@ function saveFavorites() {
   localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
-// ================= CLONE ALL PRODUCTS =================
 const allGrid = document.getElementById("allProductsGrid");
 if (allGrid) {
   allGrid.innerHTML = "";
@@ -38,7 +34,6 @@ if (allGrid) {
     });
 }
 
-// ================= RESTORE FAVORITES (cloned) =================
 document.querySelectorAll(".product-card").forEach(card => {
   const name = card.querySelector("h3")?.innerText?.trim();
   if (!name) return;
@@ -47,7 +42,6 @@ document.querySelectorAll(".product-card").forEach(card => {
   }
 });
 
-// ================= CART COUNT =================
 function updateCartCount() {
   const countEl = document.getElementById("cartCount");
   if (!countEl) return;
@@ -58,7 +52,6 @@ function updateCartCount() {
 }
 updateCartCount();
 
-// ================= TOAST =================
 function showToast(text) {
   const toast = document.createElement("div");
   toast.textContent = text;
@@ -77,9 +70,7 @@ function showToast(text) {
   setTimeout(() => toast.remove(), 2000);
 }
 
-// ================= EVENT DELEGATION =================
 document.addEventListener("click", (e) => {
-  // ===== ADD TO CART =====
   const cartBtn = e.target.closest(".add-to-cart");
   if (cartBtn) {
     const product = {
@@ -105,7 +96,6 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  // ===== FAVORITE =====
   const favBtn = e.target.closest(".fav-btn");
   if (favBtn) {
     const card = favBtn.closest(".product-card");
@@ -123,7 +113,6 @@ document.addEventListener("click", (e) => {
     return;
   }
 
-  // ===== CATEGORY FILTER =====
   const catLink = e.target.closest(".cat-link");
   if (catLink) {
     const cat = catLink.dataset.cat;
@@ -131,7 +120,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// ================= CATEGORY FILTER =================
 function filterByCategory(cat) {
   const title = document.getElementById("sectionTitle");
   const cards = document.querySelectorAll("#allProductsGrid .product-card");
@@ -143,11 +131,11 @@ function filterByCategory(cat) {
   }
 
   const map = {
-    kitchen: "🍳 Oshxona",
-    cleaning: "🧹 Tozalash",
-    climate: "❄️ Isitish & Sovutish",
-    personal: "💇 Parvarish",
-    smart: "🏠 Aqlli uy"
+    kitchen: " Oshxona",
+    cleaning: " Tozalash",
+    climate: "❄️Isitish & Sovutish",
+    personal: " Parvarish",
+    smart: " Aqlli uy"
   };
   if (title) title.textContent = map[cat] || "Mahsulotlar";
 
@@ -160,7 +148,6 @@ function filterByCategory(cat) {
 
 
 
-// ================= SINGLE PRODUCT (OPEN) =================
 function getTextPrice(num){
   return Number(num || 0).toLocaleString() + " so'm";
 }
@@ -181,12 +168,10 @@ function pickCardData(card){
   };
 }
 
-// Card bosilganda singlepage.html ga o‘tish (fav/add-to-cart bosilganda o‘tmaydi)
 document.addEventListener("click", (e) => {
   const card = e.target.closest(".product-card");
   if (!card) return;
 
-  // agar fav yoki savat tugmasi bosilgan bo‘lsa singlega o'tmaydi
   if (e.target.closest(".fav-btn")) return;
   if (e.target.closest(".add-to-cart")) return;
 
@@ -197,10 +182,9 @@ document.addEventListener("click", (e) => {
   window.location.href = "singlepage.html";
 });
 
-// ================= SINGLE PAGE RENDER =================
 function renderSinglePage(){
   const nameEl = document.getElementById("spName");
-  if(!nameEl) return; // demak bu sahifa singlepage emas
+  if(!nameEl) return; 
 
   let p = null;
   try {
@@ -209,7 +193,6 @@ function renderSinglePage(){
     p = null;
   }
 
-  // agar tanlangan mahsulot bo‘lmasa
   if(!p){
     nameEl.textContent = "Mahsulot topilmadi";
     return;
@@ -226,14 +209,12 @@ function renderSinglePage(){
   if(catEl) catEl.textContent = "Kategoriya: " + (p.category || "-");
   if(descEl) descEl.textContent = p.desc || "Ushbu mahsulot uy uchun qulay va zamonaviy yechim.";
 
-  // fav holati
   const favBtn = document.getElementById("spFavBtn");
   if (favBtn) {
     const n = (p.name || "").trim();
     if (favorites.includes(n)) favBtn.classList.add("active");
   }
 
-  // add to cart
   const addBtn = document.getElementById("spAddCart");
   if(addBtn){
     addBtn.onclick = () => {
@@ -257,7 +238,6 @@ function renderSinglePage(){
     };
   }
 
-  // fav toggle
   if (document.getElementById("spFavBtn")) {
     document.getElementById("spFavBtn").addEventListener("click", () => {
       const n = (p.name || "").trim();
@@ -275,14 +255,12 @@ function renderSinglePage(){
   }
 }
 
-// ================= FAVORITES COUNT (HEADER) =================
 function updateFavCount(){
   const el = document.getElementById("favCount");
   if(!el) return;
   el.textContent = `(${favorites.length})`;
 }
 
-// ================= INIT (hamma sahifada) =================
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   updateFavCount();
