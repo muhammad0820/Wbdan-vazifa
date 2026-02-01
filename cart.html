@@ -1,190 +1,195 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Savatcha | TechHouse</title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="cart.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Savatcha | TechHouse</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="cart.css" />
 </head>
 <body>
-<header class="topbar">
-<div class="wrap">
-<a href="index.html" class="brand">
-      Tech<span>House</span>
-</a>
-<nav class="menu">
-<a href="index.html">Bosh sahifa</a>
-<a href="cart.html" class="cart-link">
-        🛒 Savatcha  
-</a>
-</nav>
-</div>
-</header>
+
+  <header class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="brand">Tech<span>House</span></a>
+
+      <nav class="menu">
+        <a href="#all-products">Barchasi</a>
+
+        <!-- kategoriya tugmalarini bosiladigan qildim -->
+        <a href="#all-products" class="cat-link" data-cat="kitchen">Oshxona</a>
+        <a href="#all-products" class="cat-link" data-cat="cleaning">Tozalash</a>
+        <a href="#all-products" class="cat-link" data-cat="climate">Isitish & Sovutish</a>
+        <a href="#all-products" class="cat-link" data-cat="personal">Parvarish</a>
+        <a href="#all-products" class="cat-link" data-cat="smart">Aqlli uy</a>
+
+        <a href="sodiqlik.html" class="sodiqlik-link">
+          <i class="fa fa-gift"></i> Sodiqlik
+        </a>
+
+        <a href="cart.html" class="cart-link">
+          🛒 Savatcha <span id="cartCount">(0)</span>
+        </a>
+
+        <a href="login.html" class="login-link">
+          <i class="fa fa-user"></i> Login
+        </a>
+      </nav>
+    </div>
+  </header>
+
 <section class="cart-page">
-<h1>🛒 Savatchangiz</h1>
-<a href="index.html" class="back-btn">← Xaridni davom ettirish</a>
-<div class="cart-container">
-<div id="cartItems" class="cart-list"></div>
-<div class="cart-summary">
-<h2>Buyurtma xulosasi</h2>
-<div class="summary-row">
-<span>Mahsulotlar soni:</span>
-<span id="itemCount">0</span>
-</div>
-<div class="summary-row">
-<span>Jami summa:</span>
-<strong id="totalPrice">0 so'm</strong>
-</div>
-<a href="login.html" class="checkout-btn">
-        Buyurtma berish
-</a>
-</div>
-</div>
+  <h1>🛒 Savatchangiz</h1>
+  <a href="index.html" class="back-btn">← Xaridni davom ettirish</a>
+
+  <div class="cart-container">
+    <div id="cartItems" class="cart-list"></div>
+
+    <div class="cart-summary">
+      <h2>Buyurtma xulosasi</h2>
+
+      <div class="summary-row">
+        <span>Mahsulotlar soni:</span>
+        <span id="itemCount">0</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Jami summa:</span>
+        <strong id="totalPrice">0 so'm</strong>
+      </div>
+
+      <a href="login.html" class="checkout-btn">Buyurtma berish</a>
+    </div>
+  </div>
 </section>
+
 <footer class="site-footer">
-<div class="footer-bottom">
+  <div class="footer-bottom">
     © <span id="year"></span> TechHouse. Barcha huquqlar himoyalangan.
-</div>
+  </div>
 </footer>
+
 <script>
-// ===== YEAR =====
-document.querySelectorAll("#year").forEach(y => {
-  y.textContent = new Date().getFullYear();
-});
-
-// ===== CART STORAGE =====
-function getCart() {
-  return JSON.parse(localStorage.getItem("cart")) || [];
-}
-
-function saveCart(cart) {
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-}
-
-// ===== HEADER COUNT =====
-function updateCartCount() {
-  const cartCount = document.getElementById("cartCount");
-  if (cartCount) {
-    const cart = getCart();
-    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    cartCount.textContent = totalItems;
-  }
-}
-updateCartCount();
-
-// ===== ADD TO CART =====
-document.querySelectorAll(".add-to-cart").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const product = {
-      name: btn.dataset.name.trim(),
-      price: parseInt(btn.dataset.price),
-      image: btn.dataset.image,
-      quantity: 1
-    };
-    if (!product.name || isNaN(product.price)) return;
-
-    const cart = getCart();
-    const existing = cart.find(item => item.name === product.name);
-    if (existing) {
-      existing.quantity++;
-    } else {
-      cart.push(product);
-    }
-    saveCart(cart);
-
-    const old = btn.textContent;
-    btn.textContent = "✅ Qo‘shildi";
-    btn.style.background = "#22c55e";
-    setTimeout(() => {
-      btn.textContent = old;
-      btn.style.background = "";
-    }, 1000);
+  // ===== YEAR =====
+  document.querySelectorAll("#year").forEach(y => {
+    y.textContent = new Date().getFullYear();
   });
-});
 
-// ===== CART PAGE RENDER =====
-const cartItemsBox = document.getElementById("cartItems");
-const itemCount = document.getElementById("itemCount");
-const totalPriceBox = document.getElementById("totalPrice");
-if (cartItemsBox) {
-  const cart = getCart();
-  cartItemsBox.innerHTML = "";
-  let total = 0;
-  let totalItems = 0;
+  // ===== CART STORAGE (qty) =====
+  function getCart() {
+    try { return JSON.parse(localStorage.getItem("cart")) || []; }
+    catch { return []; }
+  }
+  function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
 
-  if (cart.length === 0) {
-    cartItemsBox.innerHTML = `
-      <p style="padding:40px;text-align:center;font-size:18px">
-        🛒 Savatcha bo‘sh
-      </p>`;
-  } else {
+  // ===== COUNT =====
+  function updateCartCount(){
+    const el = document.getElementById("cartCount");
+    if(!el) return;
+    const cart = getCart();
+    const total = cart.reduce((s,i)=> s + (i.qty || 0), 0);
+    el.textContent = `(${total})`;
+  }
+
+  // ===== RENDER =====
+  function renderCart(){
+    const cartItemsBox = document.getElementById("cartItems");
+    const itemCount = document.getElementById("itemCount");
+    const totalPriceBox = document.getElementById("totalPrice");
+
+    const cart = getCart();
+    cartItemsBox.innerHTML = "";
+
+    if(cart.length === 0){
+      cartItemsBox.innerHTML = `
+        <p class="empty-cart">🛒 Savatcha bo‘sh</p>
+      `;
+      itemCount.textContent = "0";
+      totalPriceBox.textContent = "0 so'm";
+      updateCartCount();
+      return;
+    }
+
+    let total = 0;
+    let totalItems = 0;
+
     cart.forEach((item, index) => {
-      if (!item.name || isNaN(item.price) || !item.quantity) return;
+      const qty = item.qty || 0;
+      const price = Number(item.price || 0);
+      const line = price * qty;
+
+      total += line;
+      totalItems += qty;
+
       const div = document.createElement("div");
       div.className = "cart-item";
       div.innerHTML = `
-        <img src="${item.image}">
+        <img src="${item.image || ""}" alt="${item.name || ""}">
         <div class="cart-item-info">
-          <h3>${item.name}</h3>
+          <h3>${item.name || ""}</h3>
+
           <div class="quantity-controls">
-            <button class="qty-btn minus" data-index="${index}">-</button>
-            <span>${item.quantity}</span>
-            <button class="qty-btn plus" data-index="${index}">+</button>
+            <button class="qty-btn minus" data-index="${index}" type="button">-</button>
+            <span>${qty}</span>
+            <button class="qty-btn plus" data-index="${index}" type="button">+</button>
           </div>
-          <p>${(item.price * item.quantity).toLocaleString()} so'm</p>
+
+          <p>${line.toLocaleString()} so'm</p>
         </div>
-        <button class="remove-btn" data-index="${index}">❌</button>
+
+        <button class="remove-btn" data-index="${index}" type="button">❌</button>
       `;
       cartItemsBox.appendChild(div);
-      total += item.price * item.quantity;
-      totalItems += item.quantity;
     });
-  }
 
-  if (itemCount) {
-    itemCount.textContent = totalItems;
-  }
-  if (totalPriceBox) {
+    itemCount.textContent = totalItems.toLocaleString();
     totalPriceBox.textContent = total.toLocaleString() + " so'm";
+    updateCartCount();
   }
 
-  // Event listeners for quantity and remove
-  document.querySelectorAll(".qty-btn.plus").forEach(btn => {
-    btn.onclick = () => {
-      const cart = getCart();
-      const index = parseInt(btn.dataset.index);
-      cart[index].quantity++;
+  // ===== CLICK HANDLER (reloadsiz) =====
+  document.addEventListener("click", (e) => {
+    const plus = e.target.closest(".qty-btn.plus");
+    const minus = e.target.closest(".qty-btn.minus");
+    const remove = e.target.closest(".remove-btn");
+
+    if(!plus && !minus && !remove) return;
+
+    const cart = getCart();
+
+    if(plus){
+      const i = Number(plus.dataset.index);
+      cart[i].qty = (cart[i].qty || 0) + 1;
       saveCart(cart);
-      location.reload();
-    };
+      renderCart();
+      return;
+    }
+
+    if(minus){
+      const i = Number(minus.dataset.index);
+      const q = cart[i].qty || 0;
+      if(q > 1) cart[i].qty = q - 1;
+      else cart.splice(i, 1);
+      saveCart(cart);
+      renderCart();
+      return;
+    }
+
+    if(remove){
+      const i = Number(remove.dataset.index);
+      cart.splice(i, 1);
+      saveCart(cart);
+      renderCart();
+      return;
+    }
   });
 
-  document.querySelectorAll(".qty-btn.minus").forEach(btn => {
-    btn.onclick = () => {
-      const cart = getCart();
-      const index = parseInt(btn.dataset.index);
-      if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-      } else {
-        cart.splice(index, 1);
-      }
-      saveCart(cart);
-      location.reload();
-    };
-  });
-
-  document.querySelectorAll(".remove-btn").forEach(btn => {
-    btn.onclick = () => {
-      const cart = getCart();
-      const index = parseInt(btn.dataset.index);
-      cart.splice(index, 1);
-      saveCart(cart);
-      location.reload();
-    };
-  });
-}
+  // INIT
+  updateCartCount();
+  renderCart();
 </script>
 </body>
 </html>

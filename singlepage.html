@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahsulot | TechHouse</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./singlpage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="topbar">
+    <div class="wrap">
+      <a href="index.html" class="brand">Tech<span>House</span></a>
+
+      <nav class="menu">
+        <a href="#all-products">Barchasi</a>
+
+        <!-- kategoriya tugmalarini bosiladigan qildim -->
+        <a href="#all-products" class="cat-link" data-cat="kitchen">Oshxona</a>
+        <a href="#all-products" class="cat-link" data-cat="cleaning">Tozalash</a>
+        <a href="#all-products" class="cat-link" data-cat="climate">Isitish & Sovutish</a>
+        <a href="#all-products" class="cat-link" data-cat="personal">Parvarish</a>
+        <a href="#all-products" class="cat-link" data-cat="smart">Aqlli uy</a>
+
+        <a href="sodiqlik.html" class="sodiqlik-link">
+          <i class="fa fa-gift"></i> Sodiqlik
+        </a>
+
+        <a href="cart.html" class="cart-link">
+          🛒 Savatcha <span id="cartCount">(0)</span>
+        </a>
+
+        <a href="login.html" class="login-link">
+          <i class="fa fa-user"></i> Login
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE ===== -->
+  <main class="single">
+    <div class="wraper">
+
+      <a class="backBtn" href="index.html#all-products">← Orqaga</a>
+
+      <div class="singleGrid">
+        <!-- IMAGE -->
+        <div class="singleLeft">
+          <div class="imgBox">
+            <img id="spImage" src="" alt="Mahsulot rasmi">
+          </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="singleRight">
+          <div class="titleRow">
+            <h1 id="spName">Mahsulot</h1>
+
+            <button id="spFavBtn" class="spFavBtn" type="button" title="Sevimlilarga">
+              <i class="fa fa-heart"></i>
+            </button>
+          </div>
+
+          <p class="muted" id="spCategory">Kategoriya: -</p>
+
+          <div class="priceRow">
+            <div class="price" id="spPrice">0 so'm</div>
+          </div>
+
+          <div class="desc">
+            <h3>Tavsif</h3>
+            <p id="spDesc">
+              Ushbu mahsulot uy uchun qulay va zamonaviy yechim.
+            </p>
+          </div>
+
+          <div class="actions">
+            <button id="spAddCart" class="btnCart" type="button">
+              🛒 Savatga qo‘shish
+            </button>
+
+            <a class="btnGoCart" href="cart.html">
+              Savatchaga o‘tish
+            </a>
+          </div>
+
+          <div class="miniInfo">
+            <div class="miniCard">
+              <i class="fa fa-truck"></i>
+              <span>Tez yetkazib berish</span>
+            </div>
+            <div class="miniCard">
+              <i class="fa fa-shield"></i>
+              <span>Kafolat</span>
+            </div>
+            <div class="miniCard">
+              <i class="fa fa-credit-card"></i>
+              <span>Muddatli to‘lov</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      © <span id="year"></span> TechHouse. Barcha huquqlar himoyalangan.
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
